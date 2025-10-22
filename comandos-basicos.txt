@@ -1,0 +1,289 @@
+1) CICLO DE VIDA DO GIT:
+ Untracked - git identifica algo no repositório, mas não tem conhecimento ainda do que se trata, ou seja, quando criamos um arquivo novo
+
+ Unmodified - quando não possui nenhuma modificação
+
+ Modified - quando fazemos alguma modificação em algum arquivo no repositório
+
+ Staged - quando está pronto para ser commitado
+
+
+2) Começar a utilizar: git
+
+3)Configuração Global para todo repositório Git da máquina: 
+ git config --global user.name "Willian Bulhões" 
+ git config --global user.email "willianbulhoes8@gmail.com"
+ git config --list (visualizar as configurações git aplicadas na máquina) 
+
+4) Definir o VS Code como editor padão:
+ git config --global core.editor "code"
+ git config --global -e (acessará o VS Code)
+
+5) Para criar seu repositório git na máquina, crie uma pasta em qualquer local da sua máquina e clicar com o botão direito do mouse para abrir o Git Bash Here.
+
+6) Comando a ser executado:
+ git init
+
+7) Alterar a Branch principal nas configurações git:
+ git config --global init.defaultBranch <name>
+
+8) Mudar o nome de uma Branch:
+ git branch -m main / master / default / etc
+
+9) Adicionar arquivo para ser "monitorado" pelo git:
+ git add . (ou informando no nome do arquivo)
+
+10) Commit no git:
+ git commit -m "descrição do que foi realizado nesse arquivo" 
+ ou git commit -am "comentário" 
+ (o parâmetro -am permite já adicionar e commitar ao mesmo tempo, porém não é possível utilizá-lo quando o arquivo estiver no estado untracked)
+
+11) Verificar Status em seus repositórios:
+ git status
+
+12) Descrever Commit no git via editor VS Code:
+ git commit -a (irá abrir um VS Code para que você descreva o seu commit)
+
+13) Abrir o VS Code via Git Bash Here:
+ code .
+
+14) Voltar ou descartar as alterações realizadas no arquivo:
+ git restore <nome-arquivo>
+ git restore . (irá desfazer todas as alterações que estiverem em modified)
+ git restore --staged . (desfazer o git add)
+
+15) Identificar tudo o que foi alterado dentro dos arquivos (irá mostrar tudo o que foi alterado no arquivo, caso você se esqueça tudo o que foi mexido):
+ git diff <nome-arquivo> 
+ git diff --cached (todas as diferenças de arquivos que foram para staged e estão prontos para serem commitados)
+ 
+16) Visualizar o histórico dos commits do seu projeto:
+ git log
+ (HEAD - commit mais recente)
+
+ git log --oneline (histório visualizado em uma única linha, só registro do que foi colocado entre "" no parâmetro -m)
+
+ git log --online -2 ou -1 (apresenta os últimos 2 ou 1 logs de commits)
+
+ git log --patch (apresenta o que tem dentro de cada commit detalhadamente)
+
+ git log --stat (quais arquivos foram alterados naquele commit)
+
+ Obs: todos esses comandos poderão ser utilizados com parâmetro -1 para visualizar o log do commit mais recente
+
+17) Acessar um determinado commit no histórico de versões (EX: buscar o que continha no início do projeto ou em outro determinado momento da timeline desse projeto):
+ git checkout <short-hash> (identificado hash através do comando git log --oneline)
+
+18) Voltando para o commit mais atual:
+ git checkout main (branch que deseja voltar)
+ git switch - (voltar para o último commit em que você estava antes de navegar pelo histórico)
+
+19) Editar descrição de determinado commit:
+ git log --oneline (irá buscar a hash com o histórico de commits)
+ git commit --amend -m "mudando a descrição do meu commit"
+ git log --oneline
+
+  IMPORTANTE: não faça isso em um repositório GitHub, só faça se for em arquivos que estão na sua máquina
+
+ git commit --amend (irá abrir o editor do VS Code pra que você consiga acessar o commit e mudar por esse editor, salvar e assim a alteração será realizada)
+
+20) Deletando Commits:
+ git reset --hard HEAD^1 
+ (parâmetro ^1 significa a quantidade de commits a serem deletados a partir do HEAD, porém tenha cuidado porque é um comando irreversível)
+
+21) Informando arquivos que não serão rastreados pelo git:
+ - crie o arquivo .gitignore em seu repositório git, e inclua o nome dos arquivos que não devem aparecer dentro desse arquivo, dessa forma, ao dar o git status, não aparecerão alterações nos arquivos e deverá aparecer somente no .gitignore
+
+22) Git Clone em arquivos locais e na rede:
+ git clone <path> <new-name>
+ EX: git clone Projeto1 New_Project
+
+23) Git Branch:
+ git branch
+ ou git branch --list
+
+24) Criando Branchs:
+ git branch <nome-branch> 
+ ou git checkout -b <nome-branch> 
+ ou git switch -c <nome-branch>
+
+25) Deletando Branchs:
+ git branch -d <nome-branch>
+
+26) Git Merge:
+ acesso a branch que precisa receber a atualização de versão e rodo
+ git merge <branch-name>
+
+27) Resolvendo conflitos:
+ ao encontrar algum conflito no merge, o VS irá apresentar o que você deseja fazer para resolver o conflito;
+ uma vez concluído, realize o comando git diff para apresentar o resultado do merge conforme o que você escolheu no VS;
+ ao final, execute git commit -a para concluir o processo de alterações na branch em que está recebendo o merge
+
+28) Git Rebase:
+ utilizado para evitar que tenhamos muitos históricos de commit, por exemplo, a cada merge que fizer da branch master para sua branch de trabalho diário
+ basicamente, serve para não ficarmos criando commits de merge no histórico de commits (git log --oneline)
+
+29) Trazendo repositório do GitHub para máquina:
+ git clone <URL do projeto> 
+ essa URL pode ser visualizada no painel do seu projeto no GitHub
+ 
+ git clone https://github.com/willianbulhoes/curso-completo.git ou
+ git clone https://github.com/willianbulhoes/curso-completo.git udemy (o parâmetro udemy pode ser um novo nome que você queira colocar desse clone em sua máquina)
+
+ após criado o clone em sua máquina, execute os comandos cd .\udemy\ , onde "udemy" é o nome que você escolheu, e depois execute git log
+
+30) Git Push:
+ utilizado para subir as atualizações do Git para o GitHub
+ após realizar as alterações em seu repositório Git, executar o git add . e o git commit -m "" , para então rodar o push
+
+ git push 
+
+ realizado os comandos, será possível visualizar o conteúdo atualizado em seu repositório do GitHub
+
+31) Git Fetch & Git Pull:
+ git fetch
+ identificar se existem alterações no seu repositório do GitHub
+ após esse comando, rodar git status para visualizar mais informações
+
+ git pull 
+ irá atualizar em sua máquina tudo o que tem de updates no repositório no GitHub
+
+32) O que é orign./main ?
+ git remote -v
+ apresenta a URL de origem do seu repositório para realizar git fetch e/ou git push
+
+ Origin é um apelido para a URL (endereço) de um repositório, e essa nomenclatura pode ser alterada
+
+ git remote add <nome-que-deseja> <URL e/ou URL alterada> 
+ EX: git remote add udemy-origin https://github.com/willianbulhoes/curso-completo.git  e/ou git remote add udemy-origin https://github.com/willianbulhoes/curso-completo-udemy-origin.git
+
+ Com esse recurso, é possível termos diferentes origens para o nosso projeto
+
+33) Enviando um repositório local para o GitHub:
+ Criado o repositório na máquina, execute o comando git init para iniciar um repositório git;
+ Crio os arquivos que desejo já incluir neste início;
+ Crio um repositório de mesmo nome no GitHub, e ao concluir irá aparecer os métodos que podemos utilizar para configurar este repositório em sua máquina, apontando para o GitHub
+
+ git remote add origin <URL do GitHub>
+ git branch -M main
+ git push -u origin main
+
+ O parâmetro -u é a abreviação do comando --set-upstream, que ficaria dessa forma:
+ git push --set-upstream origin main
+
+34) Chave SSH
+ Copiar repositório do GitHub para sua máquina via SSH
+ Ir no repositório do GitHub e copiar a URL SSH;
+ Em sua máquina, na pasta onde estão os repositórios, acessar o Git Bash Here no nível raiz, acima dos projetos;
+ Executar o comando
+
+ git clone <URL SSH> (EX:git@github.com:willianbulhoes/teste-envio-github.git)
+
+ É necessário gerar sua chave pública SSH através do comando
+ 
+ ssh-keygen
+ (essa pasta irá criar a chave na raiz do usuário como arquivo oculto)
+
+ ls ~/.ssh 
+ (comando para visualizar sua chave SSH em seu usuário na máquina)
+ O que conter xpto.pub é a sua chave SSH pública
+
+ cat ~/.ssh/<sua chave .pub>
+ EX: cat C:\Users\WillianCharantolaBul\.ssh\id_ed25519.pub
+
+ Copiar o conteúdo contendo o resultado desse comando;
+ Voltar na console do GitHub, clicar na sua "foto" e ir na opção Settings;
+ Clicar em SSH and GPG Keys;
+ Clicar em New SSH Key;
+ Informar o título/nome e colar o conteúdo que trouxe do VS Code no campo Key;
+ EX: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP+MSKJ+JT7hR2y3qgQZt6p+tHtv0a0pm78rS4ZNZFYh AzureAD+WillianCharantolaBul@ACT-F0RGP74
+
+ Você receberá um e-mail com um código de ativação então o processo irá concluir, você terá uma chave SSH configurada no GitHub.
+ Agora todos os seus projetos Git e GitHub utilizarão dessa chave SSH para autenticação.
+
+ Retorno no VS Code e digite o comando
+
+ git clone <URL SSH> 
+ EX: git@github.com:willianbulhoes/teste-envio-github.git
+
+35) Watch, Fork e Star
+ Disponíveis nos repositórios do GitHub
+ Watch -> alguém acesso o projeto e clicou para acompanhar esse projeto, então todas as atualizações que acontecerem irão aparecer em seu feed;
+ Star -> é como favoritar, salvar um determinado projeto para que você consiga visualizá-lo futuramente;
+ Fork -> possível clonar esse repositório para o seu GitHub e dessa forma mexer a vontade
+
+36) Pull Request
+ Através da console do GitHub, é possível commitar e enviar commits para um Pull Request, que passará por aprovadores para que então seja aplicado ao seu projeto
+ Função CONTRIBUTE, OPEN PULL REQUEST, descreve as alterações e envia para que passe pelos aprovadores.
+
+37) Issues, Labels & Milestones
+ Issues -> acessar o repositório do seu projeto no GitHub, clicar na aba Issues e por ela você consegue descrever os "problemas" com todos os detalhes para que outro dev ou você mesmo possa realizar as tarefas que estão descritas ali. É como se fosse uma lista de TO -> DO.
+
+ Labels -> etiquetas que vão categorizar melhor as Issues, ou seja, identificar melhor para que essa essa Issue seja trabalhada.
+ Obs.: além das Labels já existentes, você pode criar outras com intuito de categorizar melhor a sua Issue.
+
+ Milestones -> Mais uma ferramenta que possibilita categorizar suas Issues, como por exemplo, incluí-las como Backlog ou Urgent
+
+ A tela de Issues é excelente para organizar a lista de tarefas dos seus projetos, gerando uma lista de to-do's de forma categorizada com as Labels, e organizada pelos Milestones.
+
+ Cada time consegue determinar a forma como irão trabalhar com os Issues, Labels e Milestones.
+
+38) GitHub Pages
+ Possível criar qualquer site ou página estática, inclusive para testes.
+
+39) GitHub Wiki
+ Útil para gerar uma documentação mais completa do seu projeto além do README;
+ Use o link abaixo para pegar um modelo completo para que você use na criação de seus Wiki's.
+ https://gist.github.com/lohhans/f8da0b147550df3f96914d3797e9fb89
+
+ Além de copiar esse modelo, você pode criar páginas ao seu Wiki, além de incluir links para páginas externas.
+
+40) GitHub Gist
+ https://gist.github.com/willianbulhoes
+
+ Excelente para compartilhar trechos de códigos ou arquivos diversos do seu projeto para pedir ajuda ou ajudar outro dev.
+
+ EX: https://gist.github.com/willianbulhoes/84ded0afb95af3e30dadc8d28fb4b727
+
+41) Tags
+ É como se fosse etiquetas que você coloca nos commits para apontar qual dos commits representa a versão "oficial" que está subindo realmente nos deploys
+
+42) Criando Tags
+ As tags podem ser:
+ Lightweight -> tag simples
+ git tag v1.0
+
+ Annotated -> tag em que possibilita incluir informações dentro dela
+ git tag -am "<descrição>" v2.0
+ EX: git tag -am "teste tags" v2.0
+
+ Para visualizar as tags em seu projeto:
+ git tag --list
+ git tag -l
+ git tag
+
+ Para consultar o que contém nas tags:
+ git show <nome-tag)
+ EX: git show v1.0  /  git show v2.0
+
+43) Enviando Tags para o GitHub
+ Criando uma tag Lightweight para outro commit utilizando a hash
+ git tag <nome-tag> <hash-commit>
+ EX: git tag v1.1 5c8fe8b
+
+ Criando uma tag Annotated para outro commit utilizando a hash
+ git tag -am "<descrição>" <nome-tag> <hash-commit>
+ EX: git tag -am "teste com tag annotated em meu projeto" v1.2 5c8fe8b
+ 
+ Obs.: para todas as execuções, é possível acompanhar o andamento via comando git log --oneline
+
+ Para deletar determinada tag
+ git tag -d <nome-tag>
+ EX: git tag -d v1.0  
+
+ Enviando para o GitHub
+ git push origin <nome-tag>
+ EX: git push origin v2.0
+
+ Enviar todas as tags para o GitHub de uma única vez
+ git push --tags
+
