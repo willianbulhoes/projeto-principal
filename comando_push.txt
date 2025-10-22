@@ -8,3 +8,5 @@ aprendi a fazer o push corretamente
 configurado Alias para git status (git s)
 configurado Alias para git log --online (git l)
 configurado Alias para git push (git p)
+configurado Alias para git branch (git b)
+configurado Alias para git switch - (git sw)
