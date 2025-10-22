@@ -287,7 +287,56 @@
  Enviar todas as tags para o GitHub de uma única vez
  git push --tags
 
+44)Navegando entre Tags
+ É possível navegar entre versões sem utilizar a hash do commit
 
+ git log --oneline (visualizando os commits)
+
+ git checkout <nome-tag>
+ EX: git checkout v1.0
+
+ Visualizando as diferenças entre as tags que você informar
+ git diff <nome-tag> <nome-tag>
+ EX: git diff v1.0 v2.0 
+
+45) Git Flow
+ O mapeamento consiste basicamente em:
+ - Master
+   versão mais estável e que estará em produção
+ - Hotfix
+   branch para resolução de problemas praticamente em produção  
+ - Release
+   onde contém a versão pronta e que passou pelos devidos testes para que então entre em Produção
+   o que entra em Produção a partir da Release, precisa sofrer merge com a Develop para mantê-la sempre atualizada
+ - Develop
+   baseada na Master, e a partir dessa branch que realizamos as alterações, porém não fazemos deploy dela, para isso criamos uma release e a partir da Release que fazemos o deploy
+   o cenário ideal é criarmos commit e merge para Release só do que está pronto para entrar em Produção (Master)
+   a Develop é a branch que fica recebendo commit e merge o dia todo dos desenvolvedores
+ - Feature
+   as diversas alterações que vamos realizando durante o ciclo de vida do software
+
+46) Git Clone
+ Trazer repositórios do GitHub para máquina
+ git clone <URL do repositório>
+ EX: git clone https://github.com/willianbulhoes/primeiros-passos.git
+
+47) Primeiros testes em Git Flow
+ Para se utilizar do conceito acima, utilizamos uma regra via console do GitHub para impedir comandos push na branch develop
+ A regra é criada em Settings do Repositório na opção Rules -> Rulesets, e você pode definir a qual(is) branch será aplicada
+
+48) Merge com Develop
+ Realizando alterações na branch Develop da forma correta como sugere o conceito de Git Flow
+
+ Criando uma branch Feature (precisa criá-la a partir da branch Develop)
+ git switch develop 
+
+ git swith -c <nome-feature>
+ EX: git switch -c feature/update-readme
+
+
+
+
+ 
 
 
 
