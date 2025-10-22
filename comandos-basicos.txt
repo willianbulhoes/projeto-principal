@@ -333,6 +333,28 @@
  git swith -c <nome-feature>
  EX: git switch -c feature/update-readme
 
+ Após realizadas as inclusões/alterações na Feature, realizar o git push para que ative o Pull Request na console do GitHub, e através da console que poderá ser autorizado ou não o merge entre as branch Feature e Develop
+
+49) Deploy
+ Acessar a branch Develop e rodar git pull (atualizar o que contém no GitHub
+
+ git switch -c release/1.0 (criando a release 1.0)
+
+ Geralmente, na criação das Release, temos o número da versão que estamos trabalhando
+ Após as alterações necessárias
+
+ git commit -am "<descrição>"
+ EX: git commit -am "update versão"
+
+ git push -u <upstream-adotado> <release>
+ EX: git push -u git-flow release/1.0
+
+ Na console do GitHub, o push da Release ficará aguardando aprovação em Pull Request por conta da regra que criamos
+
+ Após aplicado o merge da Release com a Master, criamos um novo Pull Request para merge da Release com a Develop, assim mantemos a branch Develop atualizada
+
+ Concluindo, podemos excluir as branchs Feature/Update-Readme e Release/v1.0 via console do GitHub, uma vez que já concluímos o processo de Git Flow
+
 
 
 
