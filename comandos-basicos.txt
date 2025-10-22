@@ -287,3 +287,19 @@
  Enviar todas as tags para o GitHub de uma única vez
  git push --tags
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
