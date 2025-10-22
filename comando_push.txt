@@ -5,4 +5,6 @@ e agora, teste do comando git push
 
 aprendi a fazer o push corretamente
 
-validando Alias para git status
+configurado Alias para git status (git s)
+configurado Alias para git log --online (git l)
+configurado Alias para git push (git p)
