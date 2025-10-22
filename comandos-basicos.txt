@@ -355,6 +355,34 @@
 
  Concluindo, podemos excluir as branchs Feature/Update-Readme e Release/v1.0 via console do GitHub, uma vez que já concluímos o processo de Git Flow
 
+50) Adicionando Tag
+ A tag será criada na branch Master, que é onde está com a aplicação mais atualizada
+
+ git tag -am "<descrição da tag>" <nome-tag>
+ EX: git tag -am "add first tag in Git Flow" V1.0
+
+ git push git-glow V1.0 (subindo para o GitHub)
+
+51) Hotfix (corrigindo algo que subiu para produção)
+ Crie a branch Hotfix a partir da Master
+
+ git pull (atualizando seu Git com o conteúdo atualizado que está em GitHub)
+
+ git switch -c hotfix/V1.1 (criando branch Hotfix apontando versão já como 1.1, por conta da correção que teremos de fazer)
+
+ Corrigido o problema, commitar e realizar o push
+
+ git commit -am "resolvendo problema em produção através do Git Flow via branch Hotfix" 
+
+ git push -u git-flow hotfix/V1.1
+
+ O update irá para Pull Request na console do GitHub, e por lá faremos a aprovação do merge entre Hotfix e Master
+ Aplicado o update em produção, criamos um novo Pull Request para aplicarmos as atualizações na branch Develop, dessa forma manteremos sempre a Develop atualizada no Git
+
+
+
+
+
 
 
 
