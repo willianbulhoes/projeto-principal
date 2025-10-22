@@ -287,3 +287,118 @@
  Enviar todas as tags para o GitHub de uma única vez
  git push --tags
 
+44)Navegando entre Tags
+ É possível navegar entre versões sem utilizar a hash do commit
+
+ git log --oneline (visualizando os commits)
+
+ git checkout <nome-tag>
+ EX: git checkout v1.0
+
+ Visualizando as diferenças entre as tags que você informar
+ git diff <nome-tag> <nome-tag>
+ EX: git diff v1.0 v2.0 
+
+45) Git Flow
+ O mapeamento consiste basicamente em:
+ - Master
+   versão mais estável e que estará em produção
+ - Hotfix
+   branch para resolução de problemas praticamente em produção  
+ - Release
+   onde contém a versão pronta e que passou pelos devidos testes para que então entre em Produção
+   o que entra em Produção a partir da Release, precisa sofrer merge com a Develop para mantê-la sempre atualizada
+ - Develop
+   baseada na Master, e a partir dessa branch que realizamos as alterações, porém não fazemos deploy dela, para isso criamos uma release e a partir da Release que fazemos o deploy
+   o cenário ideal é criarmos commit e merge para Release só do que está pronto para entrar em Produção (Master)
+   a Develop é a branch que fica recebendo commit e merge o dia todo dos desenvolvedores
+ - Feature
+   as diversas alterações que vamos realizando durante o ciclo de vida do software
+
+46) Git Clone
+ Trazer repositórios do GitHub para máquina
+ git clone <URL do repositório>
+ EX: git clone https://github.com/willianbulhoes/primeiros-passos.git
+
+47) Primeiros testes em Git Flow
+ Para se utilizar do conceito acima, utilizamos uma regra via console do GitHub para impedir comandos push na branch develop
+ A regra é criada em Settings do Repositório na opção Rules -> Rulesets, e você pode definir a qual(is) branch será aplicada
+
+48) Merge com Develop
+ Realizando alterações na branch Develop da forma correta como sugere o conceito de Git Flow
+
+ Criando uma branch Feature (precisa criá-la a partir da branch Develop)
+ git switch develop 
+
+ git swith -c <nome-feature>
+ EX: git switch -c feature/update-readme
+
+ Após realizadas as inclusões/alterações na Feature, realizar o git push para que ative o Pull Request na console do GitHub, e através da console que poderá ser autorizado ou não o merge entre as branch Feature e Develop
+
+49) Deploy
+ Acessar a branch Develop e rodar git pull (atualizar o que contém no GitHub
+
+ git switch -c release/1.0 (criando a release 1.0)
+
+ Geralmente, na criação das Release, temos o número da versão que estamos trabalhando
+ Após as alterações necessárias
+
+ git commit -am "<descrição>"
+ EX: git commit -am "update versão"
+
+ git push -u <upstream-adotado> <release>
+ EX: git push -u git-flow release/1.0
+
+ Na console do GitHub, o push da Release ficará aguardando aprovação em Pull Request por conta da regra que criamos
+
+ Após aplicado o merge da Release com a Master, criamos um novo Pull Request para merge da Release com a Develop, assim mantemos a branch Develop atualizada
+
+ Concluindo, podemos excluir as branchs Feature/Update-Readme e Release/v1.0 via console do GitHub, uma vez que já concluímos o processo de Git Flow
+
+50) Adicionando Tag
+ A tag será criada na branch Master, que é onde está com a aplicação mais atualizada
+
+ git tag -am "<descrição da tag>" <nome-tag>
+ EX: git tag -am "add first tag in Git Flow" V1.0
+
+ git push git-glow V1.0 (subindo para o GitHub)
+
+51) Hotfix (corrigindo algo que subiu para produção)
+ Crie a branch Hotfix a partir da Master
+
+ git pull (atualizando seu Git com o conteúdo atualizado que está em GitHub)
+
+ git switch -c hotfix/V1.1 (criando branch Hotfix apontando versão já como 1.1, por conta da correção que teremos de fazer)
+
+ Corrigido o problema, commitar e realizar o push
+
+ git commit -am "resolvendo problema em produção através do Git Flow via branch Hotfix" 
+
+ git push -u git-flow hotfix/V1.1
+
+ O update irá para Pull Request na console do GitHub, e por lá faremos a aprovação do merge entre Hotfix e Master
+ Aplicado o update em produção, criamos um novo Pull Request para aplicarmos as atualizações na branch Develop, dessa forma manteremos sempre a Develop atualizada no Git
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
