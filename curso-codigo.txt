@@ -3,3 +3,5 @@ Segundo código.
 teste comando merge feature-1
 
 agora fazendo o caminho merge de volta
+
+aprendi a fazer o merge após criar uma nova branch
