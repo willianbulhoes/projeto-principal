@@ -379,8 +379,49 @@
  O update irá para Pull Request na console do GitHub, e por lá faremos a aprovação do merge entre Hotfix e Master
  Aplicado o update em produção, criamos um novo Pull Request para aplicarmos as atualizações na branch Develop, dessa forma manteremos sempre a Develop atualizada no Git
 
+52) Git Stash
+ Guarda as alterações que não queremos concluir neste momento, ou por ter feito muitos updates e desejar guardar sem commitar 
 
+ git stash (caso queira deixar seu Stash sem nome para identificar)
 
+ git stash save "<descrição que desejar incluir>"
+ EX: git stash save "realizando testes com git stash"
+
+ Para usar o que está em Stash
+ git stash apply
+
+ Caso queira buscar um Stash anterior, aplicar o comando
+ git stash apply <numero-stash>
+ EX: git stash apply 1
+ 
+ stash@{0}: On develop: testes com Git Stash
+ stash@{1}: WIP on develop: 87c43bc Merg
+
+53) Cherry Pick
+ Realiza o merge porém de um commit específico
+ Com ele você pode escolher qual commit deseja incluir no merge entre as branchs
+
+ git cherry-pick <hash-commit>
+ EX: git cherry-pick 7e82cbf
+ Obs.: cria-se as alterações numa branch Feature, por exemplo, verifica a hash com o comando git log --oneline , volta para branch Develop e só então executa o comando git cherry-pick para que aconteça o merge pela hash que você determinar
+
+54) Git Alias (apelidos)
+ Forma de gerar atalhos para comandos que costumeiramente são utilizados, dessa forma você poderá acioná-los mais rapidamente, sem precisar digitar o comando por completo
+
+ git config --global alias.<apelido-que-deseja-utlizar> <comando-git>
+ EX: git config --global alias.s status
+
+ Depois de configurado o Alias
+ git s
+ (com isso irá entender que você está chamando o comando git status)
+
+ Caso você queira aplicar o Alias em comandos que envolvem parâmetros
+ git config --global alias.<apelido> "<parâmetro>"
+ EX: git config --global alias.l "log --oneline"
+
+ Caso seja desativar algum Alias
+ git config --global --unset alias.<apelido>
+ EX: git config --global --unset.l
 
 
 
